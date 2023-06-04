@@ -228,9 +228,6 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         ESP_LOGI(TAG, "MQTT_EVENT_DATA");
         printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
         printf("DATA=%.*s\r\n", event->data_len, event->data);
-        //ESP_ERROR_CHECK(esp_bluedroid_enable());
-        /*esp_ble_gattc_write_char(ESP_GATT_IF_NONE, heart_rate_profile_tab[PROFILE_APP_IDX].conn_id, gatt_db_handle_table[IDX_CHAR_VAL_MQTT], 
-                                event->data_len, (uint8_t *)event->data, ESP_GATT_WRITE_TYPE_RSP, ESP_GATT_AUTH_REQ_NONE);*/
         esp_ble_gatts_set_attr_value(gatt_db_handle_table[IDX_CHAR_VAL_MQTT], event->data_len, (uint8_t *)event->data);
         break;
     case MQTT_EVENT_ERROR:
@@ -381,9 +378,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
        	    break;
         case ESP_GATTS_READ_EVT:
             if(gatt_db_handle_table[IDX_CHAR_VAL_MQTT] == param->read.handle) {
-                
                 ESP_LOGI(EXAMPLE_TAG, "read data");
-
             }
         case ESP_GATTS_WRITE_EVT:
             if (!param->write.is_prep)
