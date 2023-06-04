@@ -37,6 +37,7 @@
 #define MQTT_BROKER_USERNAME "M3ExGxt4y2DmCkvN8CAqK0tYyUD4GLEgD9D7uV0TNt3dCoRAOfPo58brRCkncOrF"
 #define MQTT_BROKER_PASSWORD ""
 #define MQTT_BROKER_CLIENTID "lop1nhom9"
+#define TOPIC_1 "Test"
 
 #define DEBUG_ON  0
 
@@ -209,7 +210,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
     switch ((esp_mqtt_event_id_t)event_id) {
     case MQTT_EVENT_CONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
-        msg_id = esp_mqtt_client_subscribe(client, "Test", 1);
+        msg_id = esp_mqtt_client_subscribe(client, TOPIC_1, 1);
         break;
     case MQTT_EVENT_DISCONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
@@ -386,7 +387,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                 if (param->write.len > 0)
                 {
                     int msg_id;
-                    msg_id = esp_mqtt_client_publish(client, "Test", (char *)param->write.value, 0, 0, 0);
+                    msg_id = esp_mqtt_client_publish(client, TOPIC_1, (char *)param->write.value, 0, 0, 0);
                     ESP_LOGI(TAG, "sent from lightblue, msg_id=%d", msg_id);
                 }
             }
