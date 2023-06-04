@@ -1,0 +1,118 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/mike/Documents/tkhtn_kd/lab4/lab4/build/bootloader/esp-idf/esptool_py && /home/mike/.espressif/python_env/idf5.1_py3.8_env/bin/python /home/mike/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mike/Documents/tkhtn_kd/lab4/lab4/build/bootloader/bootloader.bin
+Bootloader binary size 0x6740 bytes. 0x8c0 bytes (8%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/lab4.c.obj
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c: In function 'mqtt_event_handler':
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c:208:9: warning: variable 'msg_id' set but not used [-Wunused-but-set-variable]
+  208 |     int msg_id;
+      |         ^~~~~~
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c: In function 'gatts_profile_event_handler':
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c:383:15: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  383 |             if(gatt_db_handle_table[IDX_CHAR_VAL_MQTT] == param->read.handle) {
+      |               ^
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c:388:9: note: here
+  388 |         case ESP_GATTS_WRITE_EVT:
+      |         ^~~~
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c: At top level:
+/home/mike/Documents/tkhtn_kd/lab4/lab4/main/lab4.c:81:27: warning: 'prepare_write_env' defined but not used [-Wunused-variable]
+   81 | static prepare_type_env_t prepare_write_env;
+      |                           ^~~~~~~~~~~~~~~~~
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating ld/sections.ld
+[7/10] Linking CXX executable lab4.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 25 ELF sections
+Successfully created esp32 image.
+Generated /home/mike/Documents/tkhtn_kd/lab4/lab4/build/lab4.bin
+[9/10] cd /home/mike/Documents/tkhtn_kd/lab4/lab4/build/esp-idf/esptool_py && /home/mike/.espressif/python_env/idf5.1_py3.8_env/bin/python /home/mike/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/mike/Documents/tkhtn_kd/lab4/lab4/build/partition_table/partition-table.bin /home/mike/Documents/tkhtn_kd/lab4/lab4/build/lab4.bin
+lab4.bin binary size 0x152d50 bytes. Smallest app partition is 0x177000 bytes. 0x242b0 bytes (10%) free.
+[9/10] cd /home/mike/esp/esp-idf/components/esptool_py && /home/mike/.espressif/python_env/idf5.1_py3.8_env/lib/python3.8/site-packages/cmake/data/bin/cmake -D IDF_PATH=/home/mike/esp/esp-idf -D "SERIAL_TOOL=/home/mike/.espressif/python_env/idf5.1_py3.8_env/bin/python;;/home/mike/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/mike/Documents/tkhtn_kd/lab4/lab4/build -P /home/mike/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 lab4.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.5.1
+Serial port /dev/ttyUSB0
+Connecting....
+Chip is ESP32-D0WDQ6 (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: c8:f0:9e:a6:25:d0
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00162fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 26432 bytes to 16571...
+Writing at 0x00001000... (50 %)
+Writing at 0x00007640... (100 %)
+Wrote 26432 bytes (16571 compressed) at 0x00001000 in 0.9 seconds (effective 247.6 kbit/s)...
+Hash of data verified.
+Compressed 1387856 bytes to 868023...
+Writing at 0x00010000... (1 %)
+Writing at 0x0001d606... (3 %)
+Writing at 0x0002adb1... (5 %)
+Writing at 0x00035b83... (7 %)
+Writing at 0x0003b1d7... (9 %)
+Writing at 0x00044494... (11 %)
+Writing at 0x00050fcc... (13 %)
+Writing at 0x0005695e... (15 %)
+Writing at 0x0005c20d... (16 %)
+Writing at 0x00061e7c... (18 %)
+Writing at 0x000675f3... (20 %)
+Writing at 0x0006cde9... (22 %)
+Writing at 0x00072682... (24 %)
+Writing at 0x00078a39... (26 %)
+Writing at 0x0007e6d2... (28 %)
+Writing at 0x000848aa... (30 %)
+Writing at 0x0008a95f... (32 %)
+Writing at 0x00090630... (33 %)
+Writing at 0x000962a9... (35 %)
+Writing at 0x0009c228... (37 %)
+Writing at 0x000a208f... (39 %)
+Writing at 0x000a8487... (41 %)
+Writing at 0x000ae39a... (43 %)
+Writing at 0x000b400c... (45 %)
+Writing at 0x000b9efd... (47 %)
+Writing at 0x000bf747... (49 %)
+Writing at 0x000c5d62... (50 %)
+Writing at 0x000cbb00... (52 %)
+Writing at 0x000d15f7... (54 %)
+Writing at 0x000d6d2b... (56 %)
+Writing at 0x000dc088... (58 %)
+Writing at 0x000e16e6... (60 %)
+Writing at 0x000e6945... (62 %)
+Writing at 0x000ec18a... (64 %)
+Writing at 0x000f179f... (66 %)
+Writing at 0x000f6f31... (67 %)
+Writing at 0x000fcca3... (69 %)
+Writing at 0x001021ea... (71 %)
+Writing at 0x00107baa... (73 %)
+Writing at 0x0010d281... (75 %)
+Writing at 0x00112ab6... (77 %)
+Writing at 0x001181f6... (79 %)
+Writing at 0x0011dca8... (81 %)
+Writing at 0x001236a9... (83 %)
+Writing at 0x001299ae... (84 %)
+Writing at 0x00131c54... (86 %)
+Writing at 0x00139ee3... (88 %)
+Writing at 0x00140586... (90 %)
+Writing at 0x00146f8b... (92 %)
+Writing at 0x0014c56f... (94 %)
+Writing at 0x0015252a... (96 %)
+Writing at 0x00157ecf... (98 %)
+Writing at 0x0015d657... (100 %)
+Wrote 1387856 bytes (868023 compressed) at 0x00010000 in 20.0 seconds (effective 554.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 105...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (105 compressed) at 0x00008000 in 0.1 seconds (effective 362.0 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
