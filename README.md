@@ -1,9 +1,4 @@
-# Lab 4 - Exercise 2 - CE232.1
-
-## Thanh vien nhom 9:
-
-* Ta Dien Minh Tri - 20520326
-
-* Le Huu Vinh - 20520349
-
-* Pham Van Manh - 20521595
+# BLE to MQTT with ESP32-Espressif
+## This is my Design Wireless Embedded System lab 4 (CE232 in UIT).
+Send BLE data receive to MQTT. \
+[Demo](https://youtu.be/6uj-3345auc)
